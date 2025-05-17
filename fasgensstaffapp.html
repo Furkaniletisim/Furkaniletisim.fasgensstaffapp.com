@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FasGens Staff Application</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: yellow;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-image: radial-gradient(#0033cc 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: -1;
+      animation: gridPulse 4s infinite ease-in-out;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    header {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    header img {
+      width: 300px;
+      filter: drop-shadow(0 0 15px yellow);
+      animation: logoPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      text-shadow: 0 0 10px yellow, 0 0 20px yellow;
+      margin-top: 10px;
+    }
+
+    form {
+      width: 90%;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid yellow;
+      border-radius: 20px;
+      box-shadow: 0 0 25px yellow, 0 0 40px yellow;
+      animation: glowBox 2s infinite alternate;
+    }
+
+    @keyframes glowBox {
+      from { box-shadow: 0 0 25px yellow; }
+      to { box-shadow: 0 0 50px yellow; }
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      background: black;
+      color: yellow;
+      border: 1px solid yellow;
+      border-radius: 10px;
+      font-size: 1em;
+      box-shadow: 0 0 10px yellow;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 20px yellow;
+    }
+
+    button {
+      background: yellow;
+      color: black;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px yellow, 0 0 20px yellow;
+    }
+
+    button:hover {
+      background: black;
+      color: yellow;
+      box-shadow: 0 0 25px yellow, 0 0 50px yellow;
+    }
+
+    .contact {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1em;
+      color: yellow;
+      text-shadow: 0 0 5px yellow;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://yt3.ggpht.com/zM83eLaPqG8iHrjq2rX5tNmxrFSxsrF-MQ4clu8qW0OKhEIUQB4mdV76V3sXRJHMM1XRv8RIXeS0ww=s640-rw-nd-v1" alt="FasGens Logo">
+    <h1>FasGens Staff Application</h1>
+  </header>
+
+  <form id="staffForm">
+    <input type="text" name="username" placeholder="Minecraft Username" required />
+    <input type="text" name="age" placeholder="Your Age" required />
+    <textarea name="why" rows="5" placeholder="Why do you want to be staff?" required></textarea>
+    <textarea name="experience" rows="5" placeholder="Any prior experience?" required></textarea>
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <div class="contact">
+    Contact us at: <a href="mailto:fatihsayarxbox@gmail.com" style="color: yellow;">fatihsayarxbox@gmail.com</a>
+  </div>
+
+  <script>
+    // Prevent multiple submissions using localStorage
+    const form = document.getElementById('staffForm');
+    if (localStorage.getItem('submitted')) {
+      form.innerHTML = "<h2 style='text-align:center;color:yellow;'>You have already submitted the form.</h2>";
+    } else {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        localStorage.setItem('submitted', 'true');
+        form.innerHTML = "<h2 style='text-align:center;color:yellow;'>Thank you for your submission!</h2>";
+      });
+    }
+  </script>
+</body>
+</html>
